@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untukmu, Rilly 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      overflow-x: hidden;
+      text-align: center;
+      color: #ff2d95;
+      background: linear-gradient(45deg, #ffb6c1, #ffdde1, #ffc3a0, #fbc2eb, #a18cd1);
+      background-size: 500% 500%;
+      animation: gradient 10s ease infinite;
+      position: relative;
+      height: 100vh;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin-top: 40px;
+      text-shadow: 2px 2px #fff;
+      animation: pop 1s ease-in-out;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      font-size: 2.5em;
+      animation: float 8s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-110vh); opacity: 0; }
+    }
+
+    .star {
+      position: absolute;
+      color: white;
+      font-size: 0.8em;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.3; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1.2); }
+    }
+
+    .wish {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 30px auto;
+      max-width: 650px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Slider */
+    .slider {
+      position: relative;
+      max-width: 400px;
+      margin: 20px auto;
+      overflow: hidden;
+      border-radius: 20px;
+      border: 6px solid #ff69b4;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slides img {
+      width: 100%;
+      border-radius: 14px;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 50%;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    button.love {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(to right, #ff4b2b, #ff416c);
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button.love:hover {
+      transform: scale(1.1);
+      background: linear-gradient(to right, #ff6a00, #ee0979);
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 15px;
+      background: #ff69b4;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>💐 Selamat atas Shonichi Off Air!!! 🎀</h1>
+  </header>
+
+  <section class="wish">
+    <h2>💖 Cieee ada yang Shonichi nihh 💖</h2>
+    <p>
+     Shonichi off air Rilly bener-bener kayak hadiah kecil yang bikin hari terasa lebih hidup. Semoga momen ini jadi awal dari perjalanan yang makin bersinar 💕</p>
+    <p>
+
+    <!-- Slider foto -->
+    <div class="slider">
+      <div class="slides">
+        <img src="rilly1.jpg" alt="rilly 1">
+        <img src="rilly2.jpg" alt="rilly 2">
+        <img src="rilly3.jpg" alt="rilly 3">
+      </div>
+      <button class="nav-btn prev" onclick="moveSlide(-1)">❮</button>
+      <button class="nav-btn next" onclick="moveSlide(1)">❯</button>
+    </div>
+
+    <button class="love" onclick="showLove()">Klik untuk kasih 💕</button>
+    <p id="loveMessage" style="display:none; font-size:1.3em; margin-top:15px;">💌 Banyak cinta untukmu, Rilly! 💌</p>
+  </section>
+
+  <footer>
+    🎀 From Zamzami with Endless Love 🎀
+  </footer>
+
+  <!-- Script -->
+  <script>
+    // Balon & kue
+    const emojis = ["💐","🌺","🌸","🎀","💖"];
+    for(let i=0; i<20; i++){
+      let balloon = document.createElement("div");
+      balloon.className = "balloon";
+      balloon.style.left = Math.random()*100 + "vw";
+      balloon.style.animationDuration = (5 + Math.random()*5) + "s";
+      balloon.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      document.body.appendChild(balloon);
+    }
+
+    // Bintang & bulan
+    const skyIcons = ["⭐","🌙"];
+    for(let i=0; i<25; i++){
+      let star = document.createElement("div");
+      star.className = "star";
+      star.style.left = Math.random()*100 + "vw";
+      star.style.top = Math.random()*100 + "vh";
+      star.style.fontSize = (Math.random()*1.5+0.5) + "em";
+      star.textContent = skyIcons[Math.floor(Math.random()*skyIcons.length)];
+      document.body.appendChild(star);
+    }
+
+    // Slider
+    let index = 0;
+    function moveSlide(step){
+      const slides = document.querySelector(".slides");
+      const total = document.querySelectorAll(".slides img").length;
+      index = (index + step + total) % total;
+      slides.style.transform = `translateX(${-index*100}%)`;
+    }
+
+    // Love message
+    function showLove(){
+      document.getElementById("loveMessage").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
